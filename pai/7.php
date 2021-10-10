@@ -17,9 +17,7 @@
             </form>
     FORMCOUNTPERSON;
     }
-    ?>
 
-    <?php
     if (!empty($_POST['person'])) {
         echo "<h3>Ilość osób w rodzinie: $_POST[person]</h3>";
         echo <<< FORMAGEPERSON
@@ -37,16 +35,21 @@
 
     if (isset($_POST['buttonAVG'])) {
         $ageAVG=0;
+        $z=0;
         foreach ($_POST as $key => $value) {
-            echo "$key: $value<br>";
             if ($key != 'buttonAVG') {
             $ageAVG=$ageAVG+$value;
+            $z++;
             }
         }
-        echo "Średnia: $ageAVG";
+        $ageAVG1=$ageAVG / $z;
+        $ageAVG1=number_format($ageAVG1,2,',','');
+        echo "Średnia: $ageAVG1";
     }
-    //dodaj zaokrąglenie wyniku do 2 miejsc po przecinku (number_format)
-    //dodaj hiperłącze wyświetlające początkowy formularz (header('location: '))
+
+    echo "<hr>";
+    echo "<a href header(Location:7.php#location)>Strona główna</a>";
+
     ?>
 </body>
 </html>
