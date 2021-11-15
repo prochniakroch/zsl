@@ -4,37 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Użytkownicy</title>
+    <title>Miasta</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <h4>Użytkownicy</h4>
+    <h4>Miasta</h4>
     <?php
         $connect = new mysqli("localhost", "root", "", "zsl_3pi2t_g2");
 
-        $sql = "SELECT * FROM `users`";
+        $sql = "SELECT * FROM `cities`";
         $result = $connect->query($sql);
         
+        if (isset($_GET['error'])) {
+            echo $_GET['error'];
+        } 
+
         echo <<< TABLE
         <table>
             <tr>
                 <th>Id</th>
-                <th>Imię</th>
-                <th>Nazwisko</th>
-                <th>Data urodzenia</th>
-                <th>Data utworzenia użytkownika</th>
+                <th>Nazwa miasta</th>
             </tr>
 TABLE;
 
-        while ($user = $result->fetch_assoc()) {
+        while ($city = $result->fetch_assoc()) {
         echo <<< USER
             <tr>
-                <td>$user[id]</td>
-                <td>$user[name]</td>
-                <td>$user[surname]</td>
-                <td>$user[birthday]</td>
-                <td>$user[create_date]</td>
-                <td><a href="./scripts/delete_user.php?deleteUser=$user[id]">Usuń</a></td>
+                <td>$city[city_id]</td>
+                <td>$city[city]</td>
+                <td><a href="./scripts/delete_city.php?deleteCity=$city[city_id]">Usuń</a></td>
             </tr>
 USER;
         }

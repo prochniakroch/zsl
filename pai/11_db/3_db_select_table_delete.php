@@ -15,6 +15,9 @@
         $sql = "SELECT * FROM `users`";
         $result = $connect->query($sql);
         
+        if (isset($_GET['error'])) {
+            echo $_GET['error'];
+        } 
         echo <<< TABLE
         <table>
             <tr>
