@@ -6,12 +6,12 @@ if (!empty($_GET['deleteUser'])) {
     $connect->query($sql);
     if ($connect->affected_rows) {
         echo "ok";
-        header("location: ../3_db_select_table_delete.php?error=Prawidłowo usunięto rekord o id=$_GET[deleteUser]");
+        header("location: ../4_db_select_table_delete_insert_update.php?error=Prawidłowo usunięto rekord o id=$_GET[deleteUser]");
     } else {
         echo "error";
-        header('location: ../3_db_select_table_delete.php?error=Nie usunięto rekordu!');
+        header('location: ../4_db_select_table_delete_insert_update.php?error=Nie usunięto rekordu!');
     }
 } else {
-    header('location: ../3_db_select_table_delete.php');
+    header('location: ../4_db_select_table_delete_insert_update.php');
 }
 ?>
